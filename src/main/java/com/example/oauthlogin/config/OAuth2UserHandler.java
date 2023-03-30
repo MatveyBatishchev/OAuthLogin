@@ -7,12 +7,10 @@ import com.example.oauthlogin.model.domain.responseSchemas.GithubEmailResponse;
 import com.example.oauthlogin.repos.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.ParameterizedTypeReference;
-import org.springframework.security.oauth2.client.OAuth2AuthorizedClient;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Mono;
 
 import java.util.Collections;
 import java.util.List;
@@ -47,7 +45,8 @@ public final class OAuth2UserHandler implements OAuthConsumer<OAuth2User> {
                 List<GithubEmailResponse> githubEmails = webClient.get()
                         .uri("https://api.github.com/user/emails")
                         .retrieve()
-                        .bodyToMono(new ParameterizedTypeReference<List<GithubEmailResponse>>() {})
+                        .bodyToMono(new ParameterizedTypeReference<List<GithubEmailResponse>>() {
+                        })
                         .block();
 
                 Assert.notNull(githubEmails, "Retrieved github emails are null");
@@ -67,6 +66,17 @@ public final class OAuth2UserHandler implements OAuthConsumer<OAuth2User> {
                             .name(user.getAttribute("name"))
                             .image(user.getAttribute("avatar_url"))
                             .provider(UserProvider.GITHUB)
+                            .roles(Collections.singletonList(UserRole.USER))
+                            .build());
+                }
+            }
+            case "vk" -> {
+                if (userRepository.findByEmail(user.getName()).isEmpty()) {
+                    userRepository.save(User.builder()
+                            .email(user.getName())
+                            .name(user.getAttribute("first_name") + " " + user.getAttribute("last_name"))
+                            .image(user.getAttribute("photo_max"))
+                            .provider(UserProvider.VK)
                             .roles(Collections.singletonList(UserRole.USER))
                             .build());
                 }
