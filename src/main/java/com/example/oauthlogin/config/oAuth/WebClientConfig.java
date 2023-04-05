@@ -1,4 +1,4 @@
-package com.example.oauthlogin.config;
+package com.example.oauthlogin.config.oAuth;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

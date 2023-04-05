@@ -1,4 +1,4 @@
-package com.example.oauthlogin.config;
+package com.example.oauthlogin.config.oAuth;
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.oauth2.core.OAuth2AccessToken;

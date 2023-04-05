@@ -4,5 +4,6 @@ public enum UserProvider {
     LOCAL,
     GOOGLE,
     VK,
-    GITHUB
+    GITHUB,
+    YANDEX
 }

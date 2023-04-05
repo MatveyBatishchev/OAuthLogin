@@ -1,4 +1,4 @@
-package com.example.oauthlogin.config;
+package com.example.oauthlogin.config.oAuth;
 
 @FunctionalInterface
 public interface OAuthConsumer<T> {

@@ -12,7 +12,7 @@
 <body>
 <div class="container d-flex justify-content-center mt-5">
     <div class="row mt-5 d-flex justify-content-center border border-1 rounded p-3" style="width: 450px;">
-        <h2 class="mb-4 mt-2 text-center">Please Login</h2>
+        <h2 class="mb-4 mt-2 text-center">Please Sign In</h2>
         <form method="post" th:action="@{/login}">
             <div th:if="${param.error}">
                 <div class="alert alert-danger text-center" role="alert">Invalid email or password</div>
@@ -34,8 +34,8 @@
 
             <!-- 2 column grid layout for inline styling -->
             <div class="row mb-4">
-                <div class="col d-flex justify-content-end">
-                    <a class="link-secondary" href="#!"><small>Forgot password?</small></a>
+                <div class="col d-flex link-secondary justify-content-end">
+                    <small><span>Dont have an account?&#160;&#160;</span><a class="link-secondary" href="/sign-up">Sign Up</a></small>
                 </div>
             </div>
 
@@ -43,7 +43,7 @@
             <button class="btn btn-primary w-100 mb-3" type="submit">Sign in</button>
         </form>
         <div class="text-center">
-            <span class="text-secondary"><small> sign up with:</small></span><br>
+            <span class="text-secondary"><small> sign in/up with:</small></span><br>
             <a class="btn btn-link btn-floating mx-1" role="link" style="font-size: 1.6em; color: #656363;"
                th:href="@{/oauth2/authorization/google}">
                 <i class="fab fa-google"></i>
@@ -57,7 +57,7 @@
                 <i class="fab fa-vk"></i>
             </a>
             <a class="btn btn-link btn-floating mx-1" role="link" style="font-size: 1.6em; color: #656363;"
-               th:href="@{/oauth2/authorization/github}">
+               th:href="@{/oauth2/authorization/yandex}">
                 <i class="fab fa-yandex"></i>
             </a>
         </div>

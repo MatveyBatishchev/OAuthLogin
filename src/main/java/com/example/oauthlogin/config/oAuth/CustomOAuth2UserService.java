@@ -1,4 +1,4 @@
-package com.example.oauthlogin.config;
+package com.example.oauthlogin.config.oAuth;
 
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.core.convert.converter.Converter;

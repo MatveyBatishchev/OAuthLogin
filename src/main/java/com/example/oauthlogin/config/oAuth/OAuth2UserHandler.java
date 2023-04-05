@@ -1,4 +1,4 @@
-package com.example.oauthlogin.config;
+package com.example.oauthlogin.config.oAuth;
 
 import com.example.oauthlogin.model.domain.User;
 import com.example.oauthlogin.model.domain.UserProvider;
@@ -77,6 +77,17 @@ public final class OAuth2UserHandler implements OAuthConsumer<OAuth2User> {
                             .name(user.getAttribute("first_name") + " " + user.getAttribute("last_name"))
                             .image(user.getAttribute("photo_max"))
                             .provider(UserProvider.VK)
+                            .roles(Collections.singletonList(UserRole.USER))
+                            .build());
+                }
+            }
+            case "yandex" -> {
+                if (userRepository.findByEmail(user.getName()).isEmpty()) {
+                    userRepository.save(User.builder()
+                            .email(user.getName())
+                            .name(user.getAttribute("real_name"))
+                            .image("https://avatars.yandex.net/get-yapic/" + user.getAttribute("default_avatar_id") + "/islands-50")
+                            .provider(UserProvider.YANDEX)
                             .roles(Collections.singletonList(UserRole.USER))
                             .build());
                 }

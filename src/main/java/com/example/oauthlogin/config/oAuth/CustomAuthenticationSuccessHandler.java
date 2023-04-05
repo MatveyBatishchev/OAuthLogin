@@ -1,4 +1,4 @@
-package com.example.oauthlogin.config;
+package com.example.oauthlogin.config.oAuth;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
