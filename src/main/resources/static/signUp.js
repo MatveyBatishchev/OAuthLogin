@@ -22,10 +22,11 @@ function onSubmit() {
         })
         .then(data => {
             console.log(data);
+            window.location.replace("http://localhost:8080/login");
         })
         .catch(error => {
             console.error('There was a problem with the fetch operation:', error);
         });
 
-    // window.location.replace("http://localhost:8080/login");
+    //
 }

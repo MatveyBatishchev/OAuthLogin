@@ -1,6 +1,7 @@
 package com.example.oauthlogin.errors.handler;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.example.oauthlogin.util.CustomDateTimeSerializer;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Data;
 import org.joda.time.DateTime;
 import org.springframework.http.HttpStatus;
@@ -10,7 +11,7 @@ public class ApiError {
 
     private HttpStatus status;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy hh:mm:ss")
+    @JsonSerialize(using = CustomDateTimeSerializer.class)
     private DateTime timestamp;
 
     private String reason;
